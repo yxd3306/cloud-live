@@ -1,0 +1,36 @@
+server:
+  port: 8000
+
+###ThymeLeaf配置
+spring:
+  application:
+    name: live-api-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10086/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 2 #心跳间隔时间
+    lease-expiration-duration-in-seconds: 6 #最后一次心跳后6秒认为下线
+
+feign:
+  hystrix:
+    enabled: true
+
+#hystrix的超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
+#ribbon的超时时间
+#ribbon:
+#  ReadTimeout: 1000
+#  ConnectTimeout: 1000
